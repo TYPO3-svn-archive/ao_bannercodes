@@ -1,0 +1,9 @@
+
+# cat=plugin.ao_bannercodes; type=string; label=Banner code std. wrap: Displays  HTML code above the banners, can be empty if not needed.
+plugin.ao_bannercodes.stdWrap = 
+
+# cat=plugin.ao_bannercodes; type=int+; label=Banner code PID: Insert the page ID of the sysfolder where your banner records are stored.
+plugin.ao_bannercodes.pid = 0
+
+# cat=plugin.ao_bannercodes; type=string; label=Banner code wrap: Wraps each bannercode in the HTML code you specify, can be empty if not needed.
+plugin.ao_bannercodes.wrap = |<br><br>

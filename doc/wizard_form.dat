@@ -1,0 +1,25 @@
+a:7:{s:4:"save";a:2:{s:13:"extension_key";s:14:"ao_bannercodes";s:18:"print_wop_comments";s:1:"0";}s:6:"emconf";a:1:{i:1;a:7:{s:5:"title";s:11:"Bannercodes";s:11:"description";s:148:"Using this extension it is possible to display bannercodes from various adservers on a central place on every page substituting a marker or subpart.";s:8:"category";s:6:"module";s:5:"state";s:6:"stable";s:12:"dependencies";s:3:"cms";s:6:"author";s:12:"Andreas Otto";s:12:"author_email";s:18:"andreas@php4win.de";}}s:6:"tables";a:1:{i:1;a:17:{s:9:"tablename";s:11:"bannercodes";s:5:"title";s:11:"Bannercodes";s:11:"add_deleted";s:1:"1";s:10:"add_hidden";s:1:"1";s:13:"add_starttime";s:1:"1";s:11:"add_endtime";s:1:"1";s:10:"add_access";s:1:"1";s:7:"sorting";s:1:"1";s:13:"sorting_field";s:6:"crdate";s:12:"sorting_desc";s:1:"0";s:10:"type_field";s:1:"0";s:12:"header_field";s:10:"bannername";s:7:"defIcon";s:11:"default.gif";s:14:"allow_on_pages";s:1:"1";s:23:"allow_ce_insert_records";s:1:"1";s:12:"save_and_new";s:1:"1";s:6:"fields";a:2:{i:2;a:9:{s:9:"fieldname";s:10:"bannername";s:5:"title";s:11:"Banner name";s:4:"type";s:5:"input";s:12:"excludeField";s:1:"1";s:7:"_DELETE";s:1:"0";s:9:"conf_size";s:0:"";s:8:"conf_max";s:0:"";s:13:"conf_required";s:1:"0";s:12:"conf_varchar";s:1:"0";}i:1;a:8:{s:9:"fieldname";s:10:"bannercode";s:5:"title";s:11:"Banner code";s:4:"type";s:8:"textarea";s:12:"excludeField";s:1:"1";s:7:"_DELETE";s:1:"0";s:9:"conf_cols";s:0:"";s:9:"conf_rows";s:0:"";s:16:"conf_wiz_example";s:1:"0";}}}}s:6:"module";a:0:{}s:2:"pi";a:0:{}s:8:"TSconfig";a:0:{}s:2:"ts";a:1:{i:1;a:2:{s:9:"constants";s:531:"# cat=plugin.ao_bannercodes; type=string; label=Banner code std. wrap: Displays  HTML code above the banners, can be empty if not needed.
+plugin.ao_bannercodes.stdWrap = 
+
+# cat=plugin.ao_bannercodes; type=int+; label=Banner code PID: Insert the page ID of the sysfolder where your banner records are stored.
+plugin.ao_bannercodes.pid = 0
+
+# cat=plugin.ao_bannercodes; type=string; label=Banner code wrap: Wraps each bannercode in the HTML code you specify, can be empty if not needed.
+plugin.ao_bannercodes.wrap = |<br><br>";s:5:"setup";s:477:"# Loading Bannercode
+#
+temp.ao_bannercode = COA
+temp.ao_bannercode {
+    10 = CONTENT
+    10 {
+        stdWrap.required = 1
+        stdWrap.wrap = {$plugin.ao_bannercodes.stdWrap}
+        table = tx_aobannercodes_bannercodes
+        select {
+            pidInList = {$plugin.ao_bannercodes.pid}
+            orderBy = sorting
+        }
+        renderObj = TEXT
+        renderObj.field = bannercode
+        renderObj.wrap = {$plugin.ao_bannercodes.wrap}
+    }
+} ";}}}

@@ -1,0 +1,19 @@
+
+# Loading Bannercode
+#
+temp.ao_bannercode = COA
+temp.ao_bannercode {
+    10 = CONTENT
+    10 {
+        stdWrap.required = 1
+        stdWrap.wrap = {$plugin.ao_bannercodes.stdWrap}
+        table = tx_aobannercodes_bannercodes
+        select {
+            pidInList = {$plugin.ao_bannercodes.pid}
+            orderBy = sorting
+        }
+        renderObj = TEXT
+        renderObj.field = bannercode
+        renderObj.wrap = {$plugin.ao_bannercodes.wrap}
+    }
+} 
